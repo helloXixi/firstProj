@@ -14,7 +14,8 @@ FirstObj::FirstObj() {
 }
 
 FirstObj::~FirstObj() {
-    printf("2018年10月30日 纪念余梅!");
+    //edit by wxl at 2020-05-15
+    printf("2018年10月30日 yumei create!");
 }
 
 int FirstObj::add() {
