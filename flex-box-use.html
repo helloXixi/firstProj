@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  </head>
+  <body id="body">
+    <div class="body-content">
+        <div class="header">header</div>
+        <div class="middle">
+            <div class="menu">
+                menu<br><br><br>
+                <a href="https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">阮一峰 Flex 布局教程：语法篇</a><br><br><br>
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_flexible_box_layout/Controlling_ratios_of_flex_items_along_the_main_axis">MDN Flex 教程</a><br>
+            </div>
+            <div class="list">
+                <div>
+                    item1
+                </div>
+                <div>
+                    item2
+                </div>
+                <div>
+                    item3
+                    Three
+                    <br>has
+                    <br>extra
+                    <br>text
+                    <br>has
+                    <br>extra
+                    <br>text
+                </div>
+                <div>
+                    class="item4"item45555555ggdfghfghgfnhfgnfgng<br>text
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            footer
+        </div>
+    </div>
+  </body>
+</html>
+
+<style type="text/css">
+#body {
+    margin: 0;
+}
+.header {
+    height: 200px;
+    background-color: aqua;
+}
+.middle {
+    display: flex;
+    flex-direction: row;
+}
+.menu {
+    width: 300px;
+    height: 200px;
+    background-color: green;
+}
+.list {
+    display: flex;
+    /* 主轴方向 
+    row | row-reverse | column | column-reverse 
+    */
+    flex-direction: row;
+    /* 默认情况下，项目都排在一条线上。如果一条轴线排不下，如何换行 
+    nowrap | wrap | wrap-reverse 
+    */
+    flex-wrap: wrap;
+    /* 主轴上的对齐方式 
+    flex-start | flex-end | center | space-between（两端对齐，项目之间的间隔都相等） | space-around（每个项目两侧的间隔相等） 
+    */
+    /* justify-content: space-between; */
+    /* 交叉轴上如何对齐 
+    flex-start | flex-end | center | baseline（项目的第一行文字的基线对齐） | stretch（默认值：如果项目未设置高度或设为auto，将占满整个容器的高度） 
+    */
+    align-items: center;
+    /* 属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
+    flex-start | flex-end | center | space-between | space-around | stretch
+    */
+    align-content: flex-start;
+    /* flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto
+    该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。
+    1. flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。
+    如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。
+    如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。
+    2. flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。负值对该属性无效。
+    如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。
+    如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。
+    3. flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间。浏览器根据这个属性，计算主轴是否有多余空间。
+    它的默认值为auto，即项目的本来大小。
+    它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。
+    空间分配时，如果你想要弹性盒子完全忽略元素的尺寸就需要设置 flex-basis 为 0。这显式地说明弹性盒子可用抢占所有空间，并按比例进行分配。
+    */
+    /* 剩余空间撑满，区块按子元素的flex-grow分配。详解看上面链接 */
+    flex: 1 1 0;
+}
+.list :nth-child(1) {
+    /* 剩余空间占一份 */
+    flex: 1 1 0;
+    background-color: bisque;
+}
+.list :nth-child(2) {
+    /* 剩余空间占两份 */
+    flex: 2 1 0;
+    /* align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性 */
+    align-self: flex-end;
+}
+.list :nth-child(3) {
+    /* 剩余空间占一份 */
+    flex: 1 1 0;
+    background-color: rebeccapurple;
+}
+.list :nth-child(4) {
+    flex: 1 1 0;
+}
+.list > * {
+    background-color: olive;
+}
+.footer {
+    height: 200px;
+    background-color: yellow;
+}
+</style>
